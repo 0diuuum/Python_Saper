@@ -11,6 +11,7 @@ class Mine_Board(Board.Board):
         self.__set_Mine()
         self.__set_Num()
 
+    # Ustawia miny na planszy
     def __set_Mine(self):
         placed_mines = set()
         while len(placed_mines) < self.get_numMines():
@@ -22,7 +23,7 @@ class Mine_Board(Board.Board):
                 placed_mines.add((x, y))
 
 
-
+    # Ustawia liczby na polach, ktore nie sa minami, wskazujace ile min znajduje sie wokol nich
     def __set_Num(self):
         for i in range(self.get_row()):
             for j in range(self.get_col()):
@@ -35,9 +36,6 @@ class Mine_Board(Board.Board):
                             elif self.get_cell(i2, j2) == 9:
                                 n += 1
                     self.set_cell(i, j, n)
-
-    def __get_RandNum(self, r_min, r_max):
-        return random.randint(r_min, r_max)
 
     def get_numMines(self):
         return self.__numMines

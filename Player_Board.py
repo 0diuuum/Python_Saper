@@ -12,11 +12,13 @@ class Player_Board(Board.Board):
         self.gameover = False
         self.pause = False
 
+    # Inicjalizacja tablicy wartosciami 10 (nieodkryte pole)
     def __init_Array(self, k):
         for i in range(self.get_row()):
             for j in range(self.get_col()):
                 self.set_cell(i, j, k)
 
+    # Odkrywa pole, jesli jest puste to odkrywa pola dookola
     def open(self, x, y, b):
         if 0 <= x < self.get_row() and 0 <= y < self.get_col() and not(self.__is_checked(x, y)):
             copied = b.get_cell(x, y)
@@ -39,6 +41,7 @@ class Player_Board(Board.Board):
             if (self.get_row() * self.get_col() - self.__numOpened) == self.__numMines:
                 self.GameClear()
 
+    # Sprawdza czy pole jest odkryte
     def __is_checked(self, x, y):
         checked = False
         if self.get_cell(x, y) != 10:
@@ -53,5 +56,4 @@ class Player_Board(Board.Board):
     def GameClear(self):
         self.pause = True
         print("Zwyciestwo!")
-        # Zwyciestwo
 

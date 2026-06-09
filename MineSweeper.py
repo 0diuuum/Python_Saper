@@ -4,12 +4,14 @@ import pygame
 
 pygame.init()
 
+# Ustawienia okna gry
 window_width = 400
 window_height = 400
 screen = pygame.display.set_mode((window_width, window_height))
 pygame.display.set_caption("Saper")
 clock = pygame.time.Clock()
 
+# Ustawienia planszy
 row = 20
 col = 20
 mine = 50
@@ -29,7 +31,7 @@ def set_Image(img, x, y):
 def game_loop():
     loop = True
     while loop:
-        for event in pygame.event.get():
+        for event in pygame.event.get(): # Obsluga zdarzen
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -52,7 +54,7 @@ def game_loop():
             for y in range(col):
                 set_Image(img_list[playerB.get_cell(x, y)], x*row, y*col)
 
-        clock.tick(30)
+        clock.tick(30) # Ograniczenie do 30 klatek na sekunde
         pygame.display.update()
         loop = not(playerB.gameover)
 
