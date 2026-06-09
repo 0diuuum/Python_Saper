@@ -1,13 +1,3 @@
-# Python_Saper [ENG]
-- Minesweeper implemented in Python
-* * *
-- Board.py : Parent class of Mine_Board and Player_Board
-- Mine_Board.py : Class for generating and placing mines. Stores information about the number of surrounding mines in non-mine cells. Inherits from Board
-- Player_Board.py : Class that stores information updated as the player plays the game. Inherits from Board
-- MineSweeper.py : Class containing the main() function
-* * *
-- Dic_Board.py : Code using Python's dictionary. Mine_Board + Player_Board
-- MineSweeper_dic.py : Class containing the main() function using Dic_Board
 # Python_Saper [PL]
 - Saper zaimplementowany w języku Python
 * * *
@@ -18,3 +8,14 @@
 * * *
 - Dic_Board.py : Kod wykorzystujący słowniki (dictionary) języka Python. Mine_Board + Player_Board
 - MineSweeper_dic.py : Klasa zawierająca funkcję main(), korzystająca z Dic_Board
+* * *
+# Python_Saper [ENG]
+- Minesweeper implemented in Python
+* * *
+- Board.py : Parent class of Mine_Board and Player_Board
+- Mine_Board.py : Class for generating and placing mines. Stores information about the number of surrounding mines in non-mine cells. Inherits from Board
+- Player_Board.py : Class that stores information updated as the player plays the game. Inherits from Board
+- MineSweeper.py : Class containing the main() function
+* * *
+- Dic_Board.py : Code using Python's dictionary. Mine_Board + Player_Board
+- MineSweeper_dic.py : Class containing the main() function using Dic_Board
