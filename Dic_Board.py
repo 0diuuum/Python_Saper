@@ -2,7 +2,7 @@ import random
 
 
 class Dic_Board:
-    # dictionary를 이용한 버전
+    # Wersja wykorzystujaca slownik (dictionary)
     def __init__(self, x, y, mine):
         self.__rows = x
         self.__cols = y
@@ -15,7 +15,7 @@ class Dic_Board:
         self.pause = False
 
     def __make_array(self, x, y):
-        # 2차원 배열 생성 , Dictionary 형식 {'hide': (int), 'show': (int), 'checked': (bool)}
+        # Tworzy tablice 2D w formacie slownika {'hide': (int), 'show': (int), 'checked': (bool)}
         self.__mine_Array = [[{'hide': 0, 'show': 10, 'checked': False} for col in range(y)] for row in range(x)]
 
     def get_cell(self, x, y, key):
@@ -37,13 +37,14 @@ class Dic_Board:
         return self.__numMines
 
     def __set_Mine(self):
-        for i in range(self.get_numMines()):
+        placed_mines = set()
+        while len(placed_mines) < self.get_numMines():
             x = self.__get_RandNum(0, self.get_row()-1)
             y = self.__get_RandNum(0, self.get_col()-1)
-            if self.get_cell(x, y, 'hide') == 0:
+            
+            if (x, y) not in placed_mines:
                 self.set_cell(x, y, 'hide', 9)
-            else:
-                i -= 1  # i--
+                placed_mines.add((x, y))
 
     def __set_Num(self):
         for i in range(self.get_row()):
@@ -70,26 +71,26 @@ class Dic_Board:
                     for j in range(y-1, y+2):
                         if (i == x and j == y) or i < 0 or j < 0 or i >= self.get_row() or j >= self.get_col():
                             continue
-                        # 재귀호출
+                        # Wywolanie rekurencyjne
                         self.set_cell(x, y, 'show', copy)
                         self.set_cell(x, y, 'checked', True)
                         self.open(i, j)
             else:
                 self.set_cell(x, y, 'show', copy)
                 self.set_cell(x, y, 'checked', True)
-            # 열은 칸 수 기록
+            # Zwieksza liczbe odkrytych pol
             self.__numOpened += 1
-            # 승리조건
+            # Warunek zwyciestwa
             if (self.get_row() * self.get_col() - self.__numOpened) == self.__numMines:
                 self.GameClear()
 
     def GameOver(self):
         self.gameover = True
         self.pause = True
-        print("Game Over..")
+        print("Przegrana!")
 
     def GameClear(self):
         self.pause = True
-        print("Game Clear !")
-        # 승리
+        print("Zwyciestwo!")
+        # Zwyciestwo
 

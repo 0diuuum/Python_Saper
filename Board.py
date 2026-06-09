@@ -1,6 +1,6 @@
 class Board:
-    # python 은 기본적으로 모두 public 으로 접근제어를 제공하지 않는다.
-    # 접근제어자는 naming 으로만. private : __name , protected : _name
+    # Python domyślnie udostępnia wszystko jako publiczne; nie zapewnia kontroli dostępu.
+    # Konwencja nazewnictwa określa dostęp: prywatne: __name, chronione: _name
     def __init__(self, x, y):
         self.__rows = x
         self.__cols = y
@@ -19,6 +19,6 @@ class Board:
         self.__mine_Array[x][y] = s
 
     def __make_array(self, x, y):
-        # 2차원 동적 배열 생성 , 값을 0으로 초기화
+        # Tworzy dynamiczną tablicę 2D i inicjalizuje jej wartości zerami
         self.__mine_Array = [[0 for col in range(y)] for row in range(x)]
 

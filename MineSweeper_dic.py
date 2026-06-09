@@ -14,16 +14,16 @@ mine = 50
 mineB = Dic_Board.Dic_Board(row, col, mine)
 
 
-# 이미지 저장
+# Ladowanie obrazow
 img_list = []
 for i in range(12):
     img_list.append(pygame.transform.scale(pygame.image.load("image/"+str(i)+".jpg").convert(), (int(window_width / row), int(window_height / col))))
 
-# 이미지 출력 함수
+# Funkcja wyswietlajaca obraz
 def set_Image(img, x, y):
     screen.blit(img, (x, y))
 
-# 메인 게임 루프
+# Glowna petla gry
 def game_loop():
     loop = True
     while loop:
@@ -34,18 +34,18 @@ def game_loop():
             elif event.type == pygame.MOUSEBUTTONUP and not(mineB.pause):
                 mousex, mousey = event.pos
                 x, y = int(mousex/row), int(mousey/col)
-                # 좌클릭
+                # Lewy przycisk myszy
                 if event.button == 1:
                     mineB.open(x, y)
 
-                # 우클릭
+                # Prawy przycisk myszy
                 elif event.button == 3:
                     if mineB.get_cell(x, y, 'show') == 10:
                         mineB.set_cell(x, y, 'show', 11)
                     elif mineB.get_cell(x, y, 'show') == 11:
                         mineB.set_cell(x, y, 'show', 10)
 
-        # 이미지 처리
+        # Obsluga rysowania obrazow
         for x in range(row):
             for y in range(col):
                 set_Image(img_list[mineB.get_cell(x, y, 'show')], x*row, y*col)
@@ -55,7 +55,7 @@ def game_loop():
         loop = not(mineB.gameover)
 
 
-print("Mine Sweeper!")
+print("Saper!")
 game_loop()
 pygame.quit()
 quit()
